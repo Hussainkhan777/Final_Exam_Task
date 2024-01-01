@@ -8,7 +8,7 @@ export default function Navigation() {
     <Navbar bg="light" expand="lg" className="justify-content-center">
       {" "}
       {/* Add the justify-content-center class */}
-      <Navbar.Brand href="#home">Brand Name</Navbar.Brand>
+      <Navbar.Brand href="#home">Grace</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
         {" "}

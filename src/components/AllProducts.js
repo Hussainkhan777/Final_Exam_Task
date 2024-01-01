@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { APIs } from "../const/APIs";
 import { useExamContext } from "../context/FinalExamContext";
 import axios from "axios";
-import { Card } from "react-bootstrap"; // Import the Card component
+import { Row } from "react-bootstrap";
+import SingleProduct from "./SingleProduct";
 
 export default function AllProducts() {
   const { Products, setProducts } = useExamContext();
@@ -12,9 +13,7 @@ export default function AllProducts() {
       .then((response) => {
         setProducts(response.data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
   useEffect(() => {
     fetchAllData();
@@ -24,15 +23,20 @@ export default function AllProducts() {
     <>
       {Products.map((product) => {
         return (
-          <div>
-            <Card style={{ width: "18rem" }} key={product.id}>
-              <Card.Img variant="top" src={product.image} />
-              <Card.Body>
-                <Card.Title>{product.title}</Card.Title>
-                <Card.Text>Price: {product.price}</Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
+          <Row>
+            {Products.map((product) => {
+              return (
+                <SingleProduct
+                  key={product.id}
+                  id={product.id}
+                  price={product.price}
+                  imageLink={product.image}
+                  title={product.title}
+                  catagory={product.catagory}
+                />
+              );
+            })}
+          </Row>
         );
       })}
     </>
